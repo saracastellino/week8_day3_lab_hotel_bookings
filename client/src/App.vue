@@ -1,17 +1,20 @@
 <template>
-  
+  <div id="app">
+    <bookings-form />
+    <bookings-grid />
+  </div>
 </template>
 
 <script>
+import BookingsForm from './components/BookingsForm';
+import BookingsGrid from './components/BookingsGrid';
 
 export default {
   name: 'App',
   components: {
-  },
-  mounted() {
-    fetch('http://localhost:3000/api/bookings')
-    .then(res => res.json())
-    .then(data => console.log(data))
+    'bookings-form': BookingsForm,
+    'bookings-grid': BookingsGrid,
+
   }
 }
 </script>
