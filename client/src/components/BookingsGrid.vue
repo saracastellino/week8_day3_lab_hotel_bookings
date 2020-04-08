@@ -29,7 +29,12 @@ export default {
 	    eventBus.$on('booking-deleted', (id)=>{
 		    const index= this.bookings.findIndex(booking => booking._id === id)
 		    this.bookings.splice(index,1);
-	    })
+		}),
+
+		eventBus.$on('booking-updated', (id, booking)=>{
+			const index = this.bookings.findIndex(booking => booking._id === id)
+			this.bookings[index].checkedIn = true;
+		})
     },
   methods: {
     fetchData(){
@@ -44,8 +49,9 @@ export default {
 <style lang="css" scoped>
 #bookingsGrid {
 	display: flex;
+	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-evenly;
+	justify-content: space-around;
 }
 
 h2 {

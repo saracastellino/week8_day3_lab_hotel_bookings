@@ -3,6 +3,7 @@
     <h2>{{ booking.name }}</h2>
     <p>email: {{ booking.email }}</p>
     <p>Check in status: {{ booking.checkedIn }}</p>
+	<button v-if="!booking.checkedIn" v-on:click="handleUpdate">Check In</button>
     <button v-on:click="handleDelete">Delete Booking</button>
   </div>
 </template>
@@ -17,9 +18,25 @@ export default {
   methods: {
     handleDelete(){
 		BookingService.deleteBooking(this.booking._id)
-    	.then(response => eventBus.$emit('booking-deleted', this.booking._id));
-    }
-  }
+        .then(response => eventBus.$emit('booking-deleted', this.booking._id));
+	},
+	handleUpdate(){
+		// bookingCheckIn(this.booking)
+		const bookingDetails = {
+			name: this.booking.name,
+			email: this.booking.email,
+			checkedIn: true
+		}
+		BookingService.updateBooking(this.booking._id, bookingDetails)
+        .then(response => eventBus.$emit('booking-updated', this.booking._id, bookingDetails));
+		// console.log(this.booking)
+	}
+  },
+//     computed:{
+// 	  bookingCheckIn: function(booking) {
+// 			return booking.checkedIn = true
+// 	  }
+//   }
 }
 </script>
 
