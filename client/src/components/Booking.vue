@@ -21,7 +21,6 @@ export default {
         .then(response => eventBus.$emit('booking-deleted', this.booking._id));
 	},
 	handleUpdate(){
-		// bookingCheckIn(this.booking)
 		const bookingDetails = {
 			name: this.booking.name,
 			email: this.booking.email,
@@ -29,14 +28,8 @@ export default {
 		}
 		BookingService.updateBooking(this.booking._id, bookingDetails)
         .then(response => eventBus.$emit('booking-updated', this.booking._id, bookingDetails));
-		// console.log(this.booking)
 	}
   },
-//     computed:{
-// 	  bookingCheckIn: function(booking) {
-// 			return booking.checkedIn = true
-// 	  }
-//   }
 }
 </script>
 
@@ -46,6 +39,7 @@ export default {
 	background: rgba(255, 255, 255, 0.7);
 	margin-bottom: 20px;
 	padding: 25px;
+	text-align: center;
 }
 
 button {
@@ -55,6 +49,7 @@ button {
 	padding: 10px;
 	margin-top: 10px;
 	background: #F55536;
+	margin-left: 5px;
 }
 
 h2 {

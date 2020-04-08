@@ -10,7 +10,7 @@
 			<input type="text" id="email" v-model="email" required />
 		</div>
 
-		<input type="submit" value="Save" id="save"/>
+		<input class="button" type="submit" value="Save" id="save"/>
 	</form>
 </template>
 
@@ -65,5 +65,14 @@ label {
 
 .formWrap {
 	margin-bottom: 10px;
+}
+
+.button {
+	color: #fff;
+	border: none;
+	font-size: 18px;
+	padding: 10px;
+	margin-top: 10px;
+	background: #F55536;
 }
 </style>
